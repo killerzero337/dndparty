@@ -51,23 +51,3 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-model Partida {
-  id            String          @id
-  jugadores     Jugador[]
-  dungeonmaster Dungeonmaster[]
-}
-
-model Dungeonmaster {
-  id           String    @id @default(cuid())
-  nombre       String
-  especialidad String
-  role         String?   @default("ADMIN")
-  partidas     Partida[]
-}
-
-model Jugador {
-  id      String    @id @default(cuid())
-  nombre  String
-  ficha   String
-  partida Partida[]
-}
